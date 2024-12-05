@@ -1,4 +1,6 @@
-#!/bin/bash                                                                                                                                                                                                                                     # 停止和禁用所有相关服务
+#!/bin/bash
+
+# 停止和禁用所有相关服务
 for service in $(systemctl list-units --type=service --state=active | grep 'nezha-agent' | awk '{print $1}'); do
     echo "Stopping service $service..."
     sudo systemctl stop "$service"
@@ -27,3 +29,4 @@ for config_file in /opt/nezha/agent/config*.yml; do
 done
 
 echo "Cleanup completed."
+
